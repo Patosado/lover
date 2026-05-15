@@ -9,13 +9,11 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: block;  /* Cambiado de flex a block */
             min-height: 100vh;
             background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
             text-align: center;
-            overflow: hidden;
+            overflow-y: auto; /* Permite desplazamiento vertical */
         }
         
         .container {
@@ -27,9 +25,10 @@
             position: relative;
             z-index: 10;
             animation: fadeIn 1.5s ease-in-out;
-            margin: 20px; /* Agregado para que no toque los bordes en móviles */
+            margin: 40px auto; /* Centra el contenedor horizontalmente */
+            box-sizing: border-box;
         }
-        
+            
         h1 {
             color: #e74c3c;
             font-size: 2.5rem;
