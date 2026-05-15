@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isabela, Me darias el honor de convertirte en mi novia?</title>
+    <title>Isabela, ¿Me darías el honor de convertirte en mi novia?</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -27,6 +27,7 @@
             position: relative;
             z-index: 10;
             animation: fadeIn 1.5s ease-in-out;
+            margin: 20px; /* Agregado para que no toque los bordes en móviles */
         }
         
         h1 {
@@ -142,6 +143,50 @@
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
+            flex-wrap: wrap; /* Para que bajen si no caben */
+        }
+
+        /* --- ESTILOS ESPECIALES PARA CELULARES --- */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem; /* Título más chico */
+                margin-bottom: 15px;
+            }
+            
+            p {
+                font-size: 1rem; /* Texto más chico */
+                margin-bottom: 20px;
+            }
+
+            .container {
+                padding: 15px; /* Menos padding para ganar espacio */
+                margin: 10px;
+            }
+
+            .heart-img {
+                width: 100px; /* Corazón más chico */
+            }
+
+            .btn {
+                padding: 12px 25px; /* Botones más compactos */
+                font-size: 1rem;
+            }
+
+            .btn-container {
+                gap: 15px;
+                flex-direction: column; /* Botones uno arriba del otro en celulares */
+                align-items: center;
+            }
+
+            .gifs-container {
+                flex-direction: column; /* GIFs uno arriba del otro */
+                gap: 15px;
+                width: 100%;
+            }
+
+            .gifs-container .tenor-gif-embed {
+                width: 100% !important; /* Forzar que los GIFs ocupen el ancho */
+            }
         }
     </style>
 </head>
@@ -150,11 +195,15 @@
     <div class="fireworks" id="fireworks"></div>
     
     <div class="container">
-        <h1>Isabela, Me darias el honor de convertirte en mi novia?</h1>
+        <h1>Isabela, ¿Me darías el honor de convertirte en mi novia?</h1>
         
-        <img src="/lover/static/images/heart.jpg" alt="Corazón" class="heart-img">
+        <!-- RUTA CORREGIDA DE LA IMAGEN DEL CORAZÓN -->
+        <!-- Si tu index.html está en la carpeta lover/ y la imagen está en lover/static/images/heart.jpg, usa: src="static/images/heart.jpg" -->
+        <!-- O si prefieres, mueve la imagen a la misma carpeta que el index.html y usa: src="heart.jpg" -->
+        <!-- He puesto la ruta relativa más común: -->
+        <img src="lover/static/images/heart.jpg" alt="Corazón" class="heart-img"> 
         
-        <p>Mi Isa, a lo largo de estos 9 meses me he enamorado perdidamente de la persona tan inteligente, empatica, amorosa y encantadora que eres. Te agradezco infinitamente aparecer en mi vida y por eso hoy te pregunto si te gustaria volverme en hombre más feliz del mundo.</p>
+        <p>Mi Isa, a lo largo de estos 9 meses me he enamorado perdidamente de la persona tan inteligente, empática, amorosa y encantadora que eres. Te agradezco infinitamente aparecer en mi vida y por eso hoy te pregunto si te gustaría volverme el hombre más feliz del mundo.</p>
         <p>¿Aceptas?</p>
         
         <div class="btn-container">
@@ -164,19 +213,20 @@
         
         <div class="message" id="yesMessage">
             <h2><strong>Acabas de firmar un contrato de amor eterno. ❤️</strong></h2>
-            <p>Me acabas de hacer la persona más feliz del mundo!</p>
-        <div class="gifs-container">
-            <!-- GIF 1: Gato saltarín (Nuevo embed que pediste) -->
-            <div class="tenor-gif-embed" data-postid="9091438043443803258" data-share-method="host" data-aspect-ratio="0.959839" data-width="100%">
-                <a href="https://tenor.com/view/cat-hyppy-gif-9091438043443803258">Cat Hyppy GIF</a> from <a href="https://tenor.com/search/cat-gifs">Cat GIFs</a>
-            </div>
+            <p>¡Me acabas de hacer la persona más feliz del mundo!</p>
+            <div class="gifs-container">
+                <!-- GIF 1: Gato saltarín -->
+                <div class="tenor-gif-embed" data-postid="9091438043443803258" data-share-method="host" data-aspect-ratio="0.959839" data-width="100%">
+                    <a href="https://tenor.com/view/cat-hyppy-gif-9091438043443803258">Cat Hyppy GIF</a> from <a href="https://tenor.com/search/cat-gifs">Cat GIFs</a>
+                </div>
 
-            <!-- GIF 2: Shirogane Miyuki (Se queda igual) -->
-            <div class="tenor-gif-embed" data-postid="25921046" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%">
-                <a href="https://tenor.com/view/shirogane-miyuki-shirogane-kaguya-sama-love-is-war-kaguya-gif-25921046">Shirogane Miyuki Shirogane GIF</a> from <a href="https://tenor.com/search/shirogane-gifs">Shirogane GIFs</a>
+                <!-- GIF 2: Shirogane Miyuki -->
+                <div class="tenor-gif-embed" data-postid="25921046" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%">
+                    <a href="https://tenor.com/view/shirogane-miyuki-shirogane-kaguya-sama-love-is-war-kaguya-gif-25921046">Shirogane Miyuki Shirogane GIF</a> from <a href="https://tenor.com/search/shirogane-gifs">Shirogane GIFs</a>
+                </div>
             </div>
-        </div>
-            <audio id="song" src="cancion.mp3" autoplay></audio>
+            <!-- Quité el 'autoplay' de la etiqueta para evitar conflictos en móviles (lo controlamos con JS) -->
+            <audio id="song" src="cancion.mp3" loop></audio>
         </div>
     </div>
     
@@ -242,12 +292,21 @@
             }
         }
         
-        // No button moves away when hovered
+        // No button logic (Huye del mouse)
         const noBtn = document.getElementById('noBtn');
-        noBtn.addEventListener('mouseover', () => {
+        // Función para mover el botón
+        function moveBtn() {
             noBtn.style.position = 'absolute';
             noBtn.style.left = Math.random() * 80 + 10 + '%';
             noBtn.style.top = Math.random() * 80 + 10 + '%';
+        }
+        
+        // Para escritorio (con mouse)
+        noBtn.addEventListener('mouseover', moveBtn);
+        // Para celulares (con dedo)
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Evita que aparezca la ventanita de "copiar/enviar"
+            moveBtn();
         });
         
         // Yes button action
@@ -257,9 +316,13 @@
             document.querySelector('.btn-container').style.display = 'none';
             yesMessage.style.display = 'block';
             createFireworks();
-            // Play the song
+            
+            // Reproducir la canción (en móviles Safari/Chrome permiten el play si es por un click del usuario)
             const song = document.getElementById('song');
-            song.play();
+            song.play().catch(e => {
+                console.log("El navegador bloqueó la reproducción automática, el usuario debe presionar play manualmente.");
+                // Opcional: mostrar un botón de play manual si falla.
+            });
         });
         
         // Start creating hearts when the page loads
